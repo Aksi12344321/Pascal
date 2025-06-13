@@ -1,0 +1,27 @@
+@use "mixins" as *;
+@use "functions" as *;
+
+:root {
+  --container-width: #{rem(1184)};
+  --container-padding: #{rem(32)};
+
+  --font-main: "Inter", sans-serif;
+  --font-accent: "Poppins", sans-serif;
+  --font-nav: "Space Grotesk", sans-serif;
+
+  --page-bg: #fff;
+  --text-color: #000;
+  --accent: #ac182c;
+
+  --laptop-size: rem(1199);
+  --tablet-size: rem(959);
+  --mobile-size: rem(599);
+
+  --yellow: #4c7a02;
+  --tagline-link: #4c7a02;
+}
+
+.dark {
+  --page-bg: #252526;
+  --text-color: #fff;
+}

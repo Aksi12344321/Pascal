@@ -1,0 +1,53 @@
+@use "./base/index" as *;
+.swiper-slide {
+  width: rem(262) !important;
+
+  @include mobile {
+    width: rem(231) !important;
+  }
+}
+
+.swiper-pagination {
+  position: relative !important;
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+}
+
+.swiper-pagination-bullet {
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: rem(16);
+  height: rem(16);
+  border-radius: 50%;
+
+  border: 1px solid transparent;
+
+  transition: all 0.2s ease-in;
+
+  &::before {
+    content: "";
+    display: block;
+    width: rem(8);
+    height: rem(8);
+    border-radius: 50%;
+    background-color: #6c7275;
+    transition: all 0.2s ease-in;
+  }
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  border: 1px solid #141718;
+
+  &::before {
+    background-color: #141718;
+  }
+}
+
+.swiper-pagination-bullets-dynamic {
+  overflow: hidden;
+}

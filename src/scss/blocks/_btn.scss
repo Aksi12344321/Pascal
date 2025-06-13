@@ -1,0 +1,41 @@
+@use "./base/index" as *;
+.btn {
+  display: inline-block;
+  padding: rem(12) rem(56);
+
+  border-radius: rem(8);
+  background-color: #141718;
+
+  color: #fff;
+  font-size: rem(18);
+  font-weight: 500;
+  letter-spacing: rem(-0.4);
+  line-height: 1.77777;
+
+  transition: all 0.2s ease-in;
+
+  &--small {
+    padding: rem(5) rem(40);
+    font-size: rem(16);
+    font-weight: 500;
+    letter-spacing: rem(-0.4);
+    line-height: 1.75;
+
+    @include mobile {
+      padding: rem(6) rem(40);
+      font-size: rem(14);
+    }
+  }
+
+  &--wide {
+    width: 100%;
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  @include mobile {
+    font-size: rem(16);
+  }
+}

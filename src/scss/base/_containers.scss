@@ -1,0 +1,27 @@
+@use "sass:math";
+@use "vars" as *;
+@use "mixins" as *;
+
+.container {
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  max-width: var(--container-width);
+  width: 100%;
+}
+
+.container-right {
+  padding-left: calc((100% - var(--container-width)) / 2 + var(--container-padding));
+
+  @include tablet {
+    //(max-width: --container-width)
+    padding-left: var(--container-padding);
+  }
+}
+
+.container-left {
+  padding-right: calc((100% - var(--container-width)) / 2 + var(--container-padding));
+
+  @include tablet {
+    padding-right: var(--container-padding);
+  }
+}

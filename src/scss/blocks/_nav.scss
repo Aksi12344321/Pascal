@@ -1,0 +1,76 @@
+@use "./base/index" as *;
+.nav {
+  padding: rem(16) 0;
+  background-color: #e0dede;
+}
+
+.nav__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo {
+  display: flex;
+  gap: rem(4);
+  align-items: center;
+}
+
+.nav__btn-mobile-nav {
+  display: none;
+
+  @include mobile {
+    display: block;
+  }
+}
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: rem(40);
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.nav__link {
+  display: flex;
+  gap: rem(2);
+  align-items: center;
+
+  color: #141718;
+}
+
+.nav__btns {
+  display: flex;
+  gap: rem(17);
+  align-items: center;
+}
+
+.nav__btn {
+  display: flex;
+  align-items: center;
+  gap: rem(5);
+}
+
+.nav__btn--search,
+.nav__btn--user {
+  @include mobile {
+    display: none;
+  }
+}
+
+.nav__btn-count {
+  display: inline-block;
+  width: rem(20);
+  height: rem(20);
+
+  border-radius: 50%;
+  background-color: #141718;
+
+  font-size: rem(12);
+  line-height: rem(20);
+  font-weight: 700;
+  color: var(--yellow);
+  text-align: center;
+}
