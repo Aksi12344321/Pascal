@@ -1,0 +1,229 @@
+@use "./base/index" as *;
+
+.dialog {
+  position: fixed;
+  margin: 0;
+  width: rem(490);
+  top: 50%; //top: 50% и left: 50% позиционируют верхний левый угол popup в центре вьюпорта
+  left: 50%;
+  transform: translate(-50%, -50%); //сдвигает popup назад на половину его ширины и высоты, чтобы его центр (а не верхний левый угол) оказался в центре экрана
+  background: transparent;
+  &::backdrop {
+    backdrop-filter: blur(20px);
+    background: rgba(217, 250, 221, 0.55);
+  }
+  padding: rem(20); // Уменьшено для контроля высоты
+
+  overflow: hidden; //Блокируем внешний скролл
+  max-height: 90vh;
+}
+
+.dialog__inner {
+  position: relative;
+  box-shadow: 0 0 10px 2px rgba(73, 93, 76, 0.1);
+  background: #d9fadd;
+  border-radius: rem(50);
+}
+
+.scroll-block {
+  overflow: hidden;
+}
+
+.open-modal {
+  cursor: pointer;
+}
+
+.close-modal {
+  display: block; /* Или inline-block, если нужно выравнивание */
+  margin-left: auto; /* Выравнивание по правому краю */
+  margin-bottom: rem(15);
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contacts__title {
+  padding-top: rem(35);
+  padding-left: rem(35);
+  margin-bottom: rem(20);
+  font-family: var(--font-accent);
+  font-weight: 600;
+  font-size: rem(40);
+  line-height: 137%;
+  text-transform: capitalize;
+  color: #495e4c;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(25); // расстояние между линией и текстом
+    &::after {
+      content: "";
+      border-radius: rem(1);
+      width: rem(136);
+      height: rem(2);
+      position: relative; // Обязательно для top
+      top: rem(5); // Смещение вниз
+      background: #78c081;
+    }
+  }
+}
+
+.contacts__descr {
+  width: 100%;
+  padding: rem(35) rem(35) rem(43) rem(35);
+  border-radius: 35px 35px 50px 50px;
+  box-shadow: 0 0 10px 0 rgba(73, 93, 76, 0.1);
+  background: #fff;
+}
+
+.contacts__content {
+  max-width: rem(379); // Ограничиваем ширину контента
+  margin: 0 auto; // Центрируем контейнер
+  width: 100%; // Занимает доступную ширину, но не более max-width
+}
+
+.contacts__text {
+  width: rem(379);
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: rem(16);
+  line-height: rem(26);
+  color: #7ca381;
+  margin-bottom: rem(20);
+}
+
+.contacts__hours {
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(17);
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: rem(16);
+  color: #7ca381;
+  margin-bottom: rem(45);
+}
+
+.contacts__clock {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(15);
+
+  &::before {
+    content: "";
+    display: inline-block;
+    width: rem(22);
+    height: rem(22);
+    background: url(./../../img/popup/clock.svg);
+  }
+}
+
+.contacts__phone-list {
+  display: flex;
+  gap: rem(21);
+}
+
+.contacts__phone-item {
+  display: flex;
+  align-items: center;
+  gap: rem(21);
+
+  &:not(:last-child) {
+    // Применяем к всем элементам, кроме последнего
+    &::after {
+      content: ""; // Разделительная черта (можно заменить на изображение или другой символ)
+      display: inline-block;
+      width: 1px;
+      height: 39px;
+      background: #bee1c2; // Цвет черты
+    }
+  }
+}
+
+.contacts__phone-icon {
+  width: rem(20); // Фиксируем размер иконки
+  height: rem(20); // Фиксируем размер иконки
+}
+.contacts__phone-link {
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: rem(16);
+  line-height: 150%;
+  color: #7b897d;
+  white-space: nowrap;
+}
+
+//--------------2-й popup--------------
+
+.contacts__title-2 {
+  padding-top: rem(35);
+  padding-left: rem(35);
+  margin-bottom: rem(20);
+  font-family: var(--font-accent);
+  font-weight: 600;
+  font-size: rem(40);
+  line-height: 137%;
+  text-transform: capitalize;
+  color: #495e4c;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(20); // расстояние между линией и текстом
+    &::after {
+      content: "";
+      border-radius: rem(1);
+      width: rem(126);
+      height: rem(2);
+      position: relative; // Обязательно для top
+      top: rem(5); // Смещение вниз
+      background: #78c081;
+    }
+  }
+}
+.contacts__descr-2 {
+  width: 100%;
+  padding-top: rem(35);
+  padding-bottom: rem(35);
+  border-radius: 35px 35px 50px 50px;
+  box-shadow: 0 0 10px 0 rgba(73, 93, 76, 0.1);
+  background: #fff;
+}
+
+.contacts__logo {
+  margin: 0 auto;
+  margin-bottom: rem(10);
+}
+
+.contacts__form {
+  display: flex;
+  flex-direction: column;
+  gap: rem(16);
+
+  input {
+    padding: rem(16) rem(20);
+    border-radius: rem(15);
+    box-shadow: 0 0 8px 0 rgba(66, 83, 69, 0.14);
+    background: #fff;
+    font-size: 16px;
+    outline: none;
+
+    &::placeholder {
+      font-family: var(--font-main);
+      font-weight: 400;
+      font-size: 14px;
+      color: #7ca381;
+    }
+
+    &:focus {
+      border-color: #78c081;
+      box-shadow: 0 0 0 2px rgba(76, 217, 100, 0.1);
+    }
+  }
+
+  button {
+    margin-top: rem(25);
+  }
+}

@@ -1,17 +1,365 @@
 @use "./base/index" as *;
-.header {
-  background-color: #c0e4f4;
-  padding: 50px 0;
 
-  &__row {
-    display: flex;
-    justify-content: space-between;
+.header {
+  min-height: rem(820); ////задаем размер, так как фоновая картинка сожмется до размера контента без этого
+  margin-bottom: rem(100);
+
+  background-image: url(./../../img/header/header.jpeg);
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include mediaBg() {
+    background-image: url(./../../img/header/header@2x.jpeg);
+  }
+
+  @include mobile {
+    background-position: center center;
+    height: auto;
+    padding-bottom: rem(290);
+    background-image: url(./../../img/header/header-mobile.jpg);
+
+    @include mediaBg() {
+      background-image: url(./../../img/header/header-mobile@2x.jpg);
+    }
+  }
+}
+
+.header__top {
+  padding-top: rem(29);
+  margin-bottom: rem(80);
+
+  //Фиксированное меню
+  position: relative;
+  z-index: 1000;
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom-left-radius: rem(70);
+    border-bottom-right-radius: rem(70);
+    overflow: hidden;
+    padding-top: rem(26);
+    padding-bottom: rem(26);
+    transition: all 0.3s ease;
+
+    background-image: url("./../../img/header/fixed-menu.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include tablet {
+      .nav__list {
+        display: none;
+      }
+    }
+
+    @include s-mobile {
+      .nav__btn {
+        display: none;
+      }
+    }
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav__logo {
+  flex-shrink: 0; //Оно запрещает элементу сжиматься, даже если не хватает места в контейнере с display: flex
+  @include laptop {
+    width: rem(160);
+    height: auto;
+  }
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: rem(40);
+
+  @include s-laptop {
+    display: none;
+  }
+}
+
+.nav__list-link {
+  color: rgb(73, 94, 76);
+  font-size: rem(15);
+  font-weight: 400;
+  line-height: rem(18);
+  letter-spacing: 0%;
+  text-align: left;
+  text-transform: lowercase;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.nav__btns {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav__btn {
+  @include mobile {
+    display: none;
+  }
+}
+
+.header__content {
+  display: flex;
+  flex-direction: column;
+  max-width: rem(540);
+  row-gap: rem(20);
+
+  @include laptop {
+    margin-left: rem(130);
+  }
+
+  @include mobile {
+    max-width: rem(375);
+    margin: 0 auto;
+    height: auto;
+    justify-content: center;
+    text-align: center;
     align-items: center;
   }
 }
 
-.header__nav {
+.header__title {
+  color: rgb(73, 94, 76);
+  font-family: var(--font-accent);
+  font-size: rem(64);
+  font-weight: 500;
+  line-height: rem(65);
+  text-align: left;
+  text-transform: capitalize;
+  letter-spacing: 0;
+
   @include tablet {
+    font-size: rem(54);
+    line-height: rem(60);
+  }
+
+  @include mobile {
+    font-size: rem(36);
+    line-height: 128%;
+    text-align: center;
+  }
+
+  @include mini-s {
+    font-size: rem(30);
+    line-height: 128%;
+  }
+}
+
+.header__title-separator {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(45); // расстояние между линией и текстом
+  margin-bottom: rem(5);
+
+  @include laptop {
+    gap: rem(25);
+  }
+
+  @include mobile {
+    gap: rem(15);
+  }
+
+  &::before {
+    content: "";
+
+    width: rem(148);
+    height: rem(3);
+    border-radius: rem(1.5);
+    background: rgb(120, 192, 129);
+
+    @include laptop {
+      width: rem(118);
+    }
+
+    @include mobile {
+      border-radius: rem(1);
+      width: rem(93);
+      height: rem(2);
+    }
+
+    @include mini-s {
+      border-radius: rem(1);
+      width: rem(80);
+      height: rem(2);
+    }
+  }
+}
+
+.header__title-brand {
+  color: rgb(120, 192, 129);
+  font-family: var(--font-accent);
+  font-size: rem(64);
+  font-weight: 500;
+  line-height: rem(74);
+  letter-spacing: 3px;
+  text-align: left;
+  text-transform: uppercase;
+
+  @include tablet {
+    font-size: rem(54);
+    line-height: rem(60);
+  }
+
+  @include mobile {
+    font-size: rem(36);
+    line-height: 128%;
+    letter-spacing: 0.03em;
+    color: #78c081;
+  }
+
+  @include mini-s {
+    font-size: rem(30);
+    line-height: 128%;
+  }
+}
+
+.header__descr {
+  display: flex;
+  align-items: flex-start; // чтобы не прижималось к низу всей высоты
+  gap: rem(44);
+  margin-bottom: rem(52);
+
+  @include mobile {
+    margin-bottom: rem(36);
+    gap: rem(40);
+  }
+}
+
+.header__descr-circles {
+  display: flex;
+  gap: rem(10);
+  margin-top: rem(12);
+}
+
+.header__text {
+  color: rgb(124, 163, 129);
+  font-family: var(--font-main);
+  font-size: rem(22);
+  font-weight: 400;
+  line-height: rem(32);
+  text-align: left;
+
+  @include laptop {
+    font-size: rem(18);
+  }
+
+  @include mobile {
+    max-width: rem(375);
+    font-size: rem(16);
+  }
+
+  @include mini {
+    font-size: rem(14);
+  }
+}
+
+.header__contacts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(73);
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(30);
+  }
+}
+.header__address {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(20);
+
+  color: rgb(123, 137, 125);
+  font-family: var(--font-main);
+  font-size: rem(16);
+  font-weight: 400;
+  line-height: rem(24);
+  text-align: left;
+
+  @include mobile {
+    font-size: rem(14);
+    gap: rem(14);
+
+    img {
+      width: rem(16);
+      height: rem(20);
+    }
+  }
+
+  @include mini-s {
+    font-size: rem(14);
+  }
+}
+.header__phone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(20);
+
+  color: rgb(123, 137, 125);
+  font-family: var(--font-main);
+  font-size: rem(16);
+  font-weight: 400;
+  line-height: rem(24);
+  text-align: left;
+
+  @include mobile {
     display: none;
   }
+}
+
+.header__phone-mobile {
+  display: none;
+
+  @include mobile {
+    display: flex;
+    gap: rem(24);
+    font-size: rem(14);
+  }
+
+  @include mini-s {
+    font-size: rem(14);
+  }
+}
+
+.phone-mobile__wrap {
+  display: flex;
+  gap: rem(12);
+
+  img {
+    width: rem(20);
+    height: rem(20);
+  }
+}
+
+.phone-mobile__link {
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: rem(14);
+  color: #7b897d;
+}
+
+.header__btn {
+  display: flex;
+  justify-content: start;
+  margin-top: rem(63);
+  margin-bottom: rem(79);
 }

@@ -1,41 +1,99 @@
 @use "./base/index" as *;
+
 .btn {
   display: inline-block;
-  padding: rem(12) rem(56);
-
-  border-radius: rem(8);
-  background-color: #141718;
-
-  color: #fff;
+  padding: rem(33) rem(126);
+  border-radius: rem(40);
+  background: #9cd3a3;
+  box-shadow: inset 2px -2px 12px rgba(34, 111, 33, 0.36); //inner shadow
+  color: white;
+  font-family: var(--font-accent);
   font-size: rem(18);
-  font-weight: 500;
-  letter-spacing: rem(-0.4);
-  line-height: 1.77777;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: rem(23);
+  text-align: center;
+  letter-spacing: 0.04rem;
+
+  border: 10px solid rgba(120, 192, 129, 0.25);
+
+  background-clip: padding-box; //Чтобы фон не попадал на рамку
 
   transition: all 0.2s ease-in;
 
-  &--small {
-    padding: rem(5) rem(40);
-    font-size: rem(16);
-    font-weight: 500;
-    letter-spacing: rem(-0.4);
-    line-height: 1.75;
-
-    @include mobile {
-      padding: rem(6) rem(40);
-      font-size: rem(14);
-    }
-  }
-
-  &--wide {
-    width: 100%;
-  }
-
-  &:hover {
-    opacity: 0.9;
+  @include tablet {
+    padding: rem(23) rem(80);
+    white-space: nowrap;
   }
 
   @include mobile {
-    font-size: rem(16);
+    padding: rem(20) rem(50);
+    font-size: rem(17);
+    border-radius: rem(30);
   }
+
+  &--small {
+    border-radius: rem(17);
+    padding: rem(19) rem(42);
+    font-size: rem(15);
+    line-height: rem(21);
+  }
+
+  &--active {
+    background-color: rgb(92, 205, 106);
+  }
+
+  &:hover {
+    background: #54e165;
+    background-clip: padding-box;
+  }
+}
+
+.btn-nav {
+  display: inline-block;
+  padding: rem(15) rem(50);
+  border-radius: rem(25);
+  background: #9cd3a3;
+  box-shadow: inset 2px -2px 12px rgba(34, 111, 33, 0.36); //inner shadow
+  color: white;
+  font-family: var(--font-accent);
+  font-size: rem(15);
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.04rem;
+  transition: all 0.2s ease-in;
+
+  border: 10px solid rgba(255, 255, 255, 0.45);
+  background-clip: padding-box; //Чтобы фон не попадал на рамку
+
+  &--active {
+    background-color: rgb(92, 205, 106);
+  }
+
+  &:hover {
+    background: #54e165;
+    background-clip: padding-box;
+  }
+
+  &--fixed {
+    border: 10px solid rgba(120, 192, 129, 0.25);
+    background-clip: padding-box; //Чтобы фон не попадал на рамку
+  }
+
+  @include laptop {
+    padding: rem(10) rem(30);
+    font-size: rem(14);
+    border-radius: rem(20);
+  }
+}
+
+.btn-popup {
+  padding-top: rem(19);
+  padding-bottom: rem(19);
+  border-radius: rem(25);
+  font-size: rem(15);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 12px solid rgba(120, 192, 129, 0.25);
 }

@@ -1,15 +1,17 @@
 @use "./base/index" as *;
-.mobile-nav-btn {
+
+/* Nav Icon */
+.nav-icon-menu {
   --time: 0.1s;
 
-  --width: 40px;
-  --height: 30px;
+  --width: 25px;
+  --height: 16px;
 
-  --line-height: 4px;
+  --line-height: 2px;
   --spacing: 6px;
 
-  --color: #000;
-  --radius: 4px;
+  --color: #5ccd6a;
+  --radius: 2px;
 
   /* Fixed height and width */
   /* height: var(--height); */
@@ -20,72 +22,92 @@
   width: var(--width);
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
   align-items: center;
+
+  /* Layout */
+
+  z-index: 1100;
+  // display: none;
+
+  // @media (max-width: 1000px) {
+  // 	.mobile-nav-btn {
+  // 		display: block;
+  // 	}
+  // }
+}
+
+.line {
+  position: relative;
+  width: var(--width);
+  height: var(--line-height);
+  background-color: var(--color);
+  border-radius: var(--radius);
+}
+
+.line-2 {
+  display: flex;
+  justify-content: space-between;
+  width: 25px;
+  background: none;
+  height: auto;
+}
+
+.line-2-left,
+.line-2-right {
+  background-color: #5ccd6a;
+  height: 2px;
+  border-radius: 2px;
+}
+
+.line-2-left {
+  width: 6px;
+}
+
+.line-2-right {
+  width: 16px;
+}
+
+.nav-icon-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  width: 49px;
+  height: 49px;
+  box-shadow: 0 4px 10px 0 rgba(73, 93, 76, 0.15);
+  background: #fff;
 }
 
 .nav-icon {
-  position: relative;
-  width: var(--width);
-  height: var(--line-height);
-  background-color: var(--color);
-  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  width: 69px;
+  height: 69px;
+  background: rgba(255, 255, 255, 0.45);
 }
 
-.nav-icon::before,
-.nav-icon::after {
-  content: "";
-  display: block;
-
-  position: absolute;
-  left: 0;
-
-  width: var(--width);
-  height: var(--line-height);
-
-  border-radius: var(--radius);
-  background-color: var(--color);
-  transition: transform var(--time) ease-in, top var(--time) linear var(--time);
+.icon-close {
+  display: none;
 }
-
-.nav-icon::before {
-  /* top: calc(var(--line-height) * -2); */
-  top: calc(-1 * (var(--line-height) + var(--spacing)));
-}
-
-.nav-icon::after {
-  /* top: calc(var(--line-height) * 2); */
-  top: calc(var(--line-height) + var(--spacing));
-}
-
-.nav-icon.nav-icon--active {
-  background-color: transparent;
-}
-
-.nav-icon.nav-icon--active::before,
-.nav-icon.nav-icon--active::after {
-  top: 0;
-  transition: top var(--time) linear, transform var(--time) ease-in var(--time);
-}
-
-.nav-icon.nav-icon--active::before {
-  transform: rotate(45deg);
-}
-
-.nav-icon.nav-icon--active::after {
-  transform: rotate(-45deg);
-}
-
-/* Layout */
 
 .mobile-nav-btn {
-  position: relative;
-  z-index: 999;
-  // display: none;
+  display: none;
+
+  @include s-laptop {
+    display: block;
+  }
 }
 
-// @media (max-width: 1000px) {
-// 	.mobile-nav-btn {
-// 		display: block;
-// 	}
-// }
+.mobile-nav-btn--active {
+  .nav-icon {
+    display: none;
+  }
+
+  .icon-close {
+    display: block;
+  }
+}

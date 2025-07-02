@@ -1,0 +1,66 @@
+<dialog class="dialog dialog-1">
+  <button class="close-modal" aria-label="Закрыть">
+    <img src="./img/popup/close.svg" alt="Закрыть" width="73" height="69" />
+  </button>
+  <div class="dialog__inner">
+    <div class="contacts">
+      <h2 class="contacts__title">Быстрая связь <span>с нами</span></h2>
+      <div class="contacts__descr">
+        <div class="contacts__content">
+          <p class="contacts__text">Вы можете набрать нам, и менеджеры Pascal Vent с радостью проконсультируют Вас по любому вопросу и помогут определиться с выбором.</p>
+          <div class="contacts__hours">
+            <p>График приема звонков:</p>
+            <p class="contacts__clock">ПН-СБ с 9:00 до 19:00</p>
+          </div>
+          <ul class="contacts__phone-list">
+            <li class="contacts__phone-item">
+              <span class="contacts__phone-icon">
+                <img src="./img/popup/phone.svg" alt="Иконка телефона" />
+              </span>
+              <a href="tel:+74923736331" class="contacts__phone-link">
+                <span>
+                  +7<span>&nbsp;</span>492<span>&nbsp;</span>373<span>&nbsp;</span>63<span>&nbsp;</span>31
+                </span>
+              </a>
+            </li>
+            <li class="contacts__phone-item">
+              <span class="contacts__phone-icon">
+                <img src="./img/popup/phone.svg" alt="Иконка телефона" />
+              </span>
+
+              <a href="tel:+74923736331" class="contacts__phone-link">
+                <span>
+                  +7<span>&nbsp;</span>424<span>&nbsp;</span>367<span>&nbsp;</span>89<span>&nbsp;</span>29
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="dialog dialog-2">
+  <button class="close-modal" aria-label="Закрыть">
+    <img src="./img/popup/close.svg" alt="Закрыть" width="73" height="69" />
+  </button>
+  <div class="dialog__inner">
+    <div class="contacts">
+      <h2 class="contacts__title-2">мы свяжемся <span>с Вами</span></h2>
+      <div class="contacts__descr-2">
+        <div class="contacts__content contacts__content-2">
+          <form class="contacts__form">
+            <input type="text" name="name" placeholder="Ваше Имя" required />
+            <input type="tel" name="phone" placeholder="Номер телефона" required />
+            <p class="input-error phone-error" style="display:none; color:red; font-size:14px; margin-top:5px;">
+              Пожалуйста, введите номер от 7 до 15 цифр. Допускается знак + в начале.
+            </p>
+            <button class="contacts__btn btn btn-popup btn--active" type="submit">ОТПРАВИТЬ</button>
+          </form>
+        </div>
+      </div>
+      <div class="contacts__logo"><img class="contacts__logo" src="./img/logo/logo.svg" alt="Logo" width="228" height="68" /></div>
+    </div>
+  </div>
+</dialog>

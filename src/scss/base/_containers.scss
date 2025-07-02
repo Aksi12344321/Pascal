@@ -9,6 +9,13 @@
   width: 100%;
 }
 
+.container-header {
+  margin: 0 auto;
+  padding: 0 var(--container-padding-header);
+  max-width: var(--container-width-header);
+  width: 100%;
+}
+
 .container-right {
   padding-left: calc((100% - var(--container-width)) / 2 + var(--container-padding));
 

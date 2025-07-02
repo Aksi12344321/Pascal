@@ -2,26 +2,22 @@
 @use "functions" as *;
 
 :root {
-  --container-width: #{rem(1184)};
-  --container-padding: #{rem(32)};
+  --container-width: 1172px;
+  --container-padding: 35px;
 
-  --font-main: "Inter", sans-serif;
-  --font-accent: "Poppins", sans-serif;
-  --font-nav: "Space Grotesk", sans-serif;
+  --container-width-header: 1350px;
+  --container-padding-header: 45px;
 
-  --page-bg: #fff;
-  --text-color: #000;
-  --accent: #ac182c;
+  --font-main: "Montserrat", sans-serif;
+  --font-accent: "Ruberoid", sans-serif;
 
-  --laptop-size: rem(1199);
-  --tablet-size: rem(959);
-  --mobile-size: rem(599);
+  --page-bg: rgb(245, 245, 245);
+  --header-bg: linear-gradient(180deg, rgb(241, 241, 241), rgb(240, 242, 241) 16.255%, rgb(235, 237, 236) 43.26%, rgb(230, 232, 231) 72.504%, rgb(222, 226, 225) 100%);
 
-  --yellow: #4c7a02;
-  --tagline-link: #4c7a02;
-}
+  --text-color: rgb(132, 132, 132);
+  --title: rgb(73, 94, 76);
+  --header-color: rgb(120, 192, 129);
+  --accent: rgb(124, 163, 129);
 
-.dark {
-  --page-bg: #252526;
-  --text-color: #fff;
+  --link-color: rgb(92, 205, 106);
 }

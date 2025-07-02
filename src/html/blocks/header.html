@@ -1,17 +1,92 @@
 <header class="header">
-  <div class="container">
-    <div class="header__row">
-      <div class="logo">ВебКадеми</div>
-      <nav class="header__nav nav">
+  <div class="header__top">
+    <div class="container-header">
+      <nav class="nav">
+        <a class="nav__logo logo" href="#!">
+          <img src="./img/logo/logo.svg" alt="Logo" width="196" height="61" />
+        </a>
         <ul class="nav__list">
-          <li><a href="index.html" class="active">Главная</a></li>
-          <li><a href="docs.html">Документация</a></li>
+          <li class="nav__list-item"><a class="nav__list-link" href="#!">Услуги</a></li>
+          <li class="nav__list-item"><a class="nav__list-link" href="#!">О Нас</a></li>
+          <li class="nav__list-item"><a class="nav__list-link" href="#!">Польза Продукта</a></li>
+          <li class="nav__list-item"><a class="nav__list-link" href="#!">Оборудование</a></li>
+          <li class="nav__list-item"><a class="nav__list-link" href="#!">Этапы Работы</a></li>
+          <li class="nav__list-item"><a class="nav__list-link" href="#!">Отзывы</a></li>
         </ul>
+        <div class="nav__btns">
+          <div class="nav__btn">
+            <button class="nav__btn-link btn-nav btn-nav--active open-modal" type="button" id="header-btn-1">Связаться</button>
+          </div>
+          <button class="mobile-nav-btn" id="mobile-nav-btn">
+            <div class="nav-icon">
+              <div class="nav-icon-card">
+                <div class="nav-icon-menu">
+                  <span class="line line-1"></span>
+                  <span class="line line-2">
+                    <span class="line-2-left"></span>
+                    <span class="line-2-right"></span>
+                  </span>
+                  <span class="line line-3"></span>
+                </div>
+              </div>
+            </div>
+            <img class="icon icon-close" src="./img/header/close.svg" alt="Закрыть" />
+          </button>
+        </div>
       </nav>
-      <button class="mobile-nav-btn">
-        <div class="nav-icon"></div>
-      </button>
+    </div>
+  </div>
+  <div class="header__bottom">
+    <div class="container">
+      <div class="header__content">
+        <h1 class="header__title">Чистый Воздух <span class="header__title-separator">вместе с</span> <span class="header__title-brand">Pascal vent</span></h1>
+        <div class="header__descr">
+          <div class="header__descr-circles">
+            <img src="./img/header/ellipse-1.svg" alt="ellipse" />
+            <img src="./img/header/ellipse-2.svg" alt="ellipse" />
+            <img src="./img/header/ellipse-3.svg" alt="ellipse" />
+          </div>
+          <!-- <img class="header__descr-img" src="./img/header/group.png" alt="Circles" /> -->
+
+          <p class="header__text">Проектирование, поставка и монтаж систем вентиляции и кондиционирования</p>
+        </div>
+        <div class="header__contacts">
+          <div class="header__address">
+            <img src="./img/header/map.svg" alt="Map" />
+            <p>Московский регион, Москва</p>
+          </div>
+          <div class="header__phone">
+            <img src="./img/header/tel.svg" alt="Phone" />
+
+            <p>+7 123 456-78-90 +7 987 654-32-10</p>
+          </div>
+          <div class="header__phone-mobile">
+            <div class="phone-mobile__wrap">
+              <img src="./img/header/tel.svg" alt="Phone" />
+
+              <a href="tel:+74923736331" class="phone-mobile__link">
+                <span style="white-space: nowrap;">
+                  +7<span>&nbsp;</span>492<span>&nbsp;</span>373<span>&nbsp;</span>63<span>&nbsp;</span>31
+                </span>
+              </a>
+            </div>
+
+            <div class="phone-mobile__wrap">
+              <img src="./img/header/tel.svg" alt="Phone" />
+
+              <a href="tel:+74923736331" class="phone-mobile__link">
+                <span style="white-space: nowrap;">
+                  +7<span>&nbsp;</span>424<span>&nbsp;</span>367<span>&nbsp;</span>89<span>&nbsp;</span>29
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="header__btn">
+          <a class="header__btn-link btn btn--active" href="#!" id="header-btn-2">Оставить заявку</a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
-@@include('mobile-nav.html')
+@@include('mobile-nav.html') @@include('popups.html')

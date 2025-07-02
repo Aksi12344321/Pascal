@@ -1,126 +1,81 @@
-const plumber = require('gulp-plumber');
-const notify = require('gulp-notify');
+const gulp = require("gulp");
+const plumber = require("gulp-plumber");
+const notify = require("gulp-notify");
+const fonter = require("gulp-fonter-fix");
+const ttf2woff2 = require("gulp-ttf2woff2");
+const fs = require("fs");
+const path = require("path");
 
-const fs = require('fs');
-const gulp = require('gulp');
-const fonter = require('gulp-fonter-fix');
-const ttf2woff2 = require('gulp-ttf2woff2');
+const srcFolder = "./src";
+const docsFolder = "./docs";
 
-const srcFolder = './src';
-const destFolder = './docs';
+function otfToTtf() {
+  return gulp
+    .src(`${srcFolder}/fonts/*.otf`, { allowEmpty: true })
+    .pipe(plumber(notify.onError({ title: "FONTS OTF→TTF", message: "Error: <%= error.message %>" })))
+    .pipe(fonter({ formats: ["ttf"] }))
+    .pipe(gulp.dest(`${srcFolder}/fonts/`));
+}
 
-gulp.task('otfToTtf', () => {
-	// Ищем файлы шрифтов .otf
-	return (
-		gulp
-			.src(`${srcFolder}/fonts/*.otf`, {})
-			// Конвертируем в .ttf
-			.pipe(
-				fonter({
-					formats: ['ttf'],
-				})
-			)
-			// Выгружаем в исходную папку
-			.pipe(gulp.dest(`${srcFolder}/fonts/`))
-			.pipe(
-				plumber(
-					notify.onError({
-						title: 'FONTS',
-						message:
-							'Error: <%= error.message %>. File: <%= file.relative %>!',
-					})
-				)
-			)
-	);
-});
+function ttfToWoff() {
+  return gulp
+    .src(`${srcFolder}/fonts/*.ttf`, { allowEmpty: true })
+    .pipe(plumber(notify.onError({ title: "FONTS TTF→WOFF/WOFF2", message: "Error: <%= error.message %>" })))
+    .pipe(fonter({ formats: ["woff"] }))
+    .pipe(gulp.dest(`${docsFolder}/fonts/`))
+    .pipe(gulp.src(`${srcFolder}/fonts/*.ttf`))
+    .pipe(ttf2woff2())
+    .pipe(gulp.dest(`${docsFolder}/fonts/`));
+}
 
-gulp.task('ttfToWoff', () => {
-	// Ищем файлы шрифтов .ttf
-	return (
-		gulp
-			.src(`${srcFolder}/fonts/*.ttf`, {})
-			// Конвертируем в .woff
-			.pipe(
-				fonter({
-					formats: ['woff'],
-				})
-			)
-			// Выгружаем в папку с результатом
-			.pipe(gulp.dest(`${destFolder}/fonts/`))
-			// Ищем файлы шрифтов .ttf
-			.pipe(gulp.src(`${srcFolder}/fonts/*.ttf`))
-			// Конвертируем в .woff2
-			.pipe(ttf2woff2())
-			// Выгружаем в папку с результатом
-			.pipe(gulp.dest(`${destFolder}/fonts/`))
-			.pipe(
-				plumber(
-					notify.onError({
-						title: 'FONTS',
-						message: 'Error: <%= error.message %>',
-					})
-				)
-			)
-	);
-});
+function copyWoff() {
+  return gulp.src(`${srcFolder}/fonts/*.{woff,woff2}`, { allowEmpty: true }).pipe(gulp.dest(`${docsFolder}/fonts/`));
+}
 
-gulp.task('fontsStyle', () => {
-	// Файл стилей подключения шрифтов
-	let fontsFile = `${srcFolder}/scss/base/_fontsAutoGen.scss`;
-	// Проверяем существуют ли файлы шрифтов
-	fs.readdir(`${destFolder}/fonts/`, function (err, fontsFiles) {
-		if (fontsFiles) {
-			// Проверяем существует ли файл стилей для подключения шрифтов
+function fontsStyle(cb) {
+  const fontsDir = `${docsFolder}/fonts/`;
+  const styleFile = `${srcFolder}/scss/base/_fontsAutoGen.scss`;
 
-				// Если файла нет, создаем его
-				fs.writeFile(fontsFile, '', cb);
-				let newFileOnly;
-				for (var i = 0; i < fontsFiles.length; i++) {
-					// Записываем подключения шрифтов в файл стилей
-					let fontFileName = fontsFiles[i].split('.')[0];
-					if (newFileOnly !== fontFileName) {
-						let fontName = fontFileName.split('-')[0]
-							? fontFileName.split('-')[0]
-							: fontFileName;
-						let fontWeight = fontFileName.split('-')[1]
-							? fontFileName.split('-')[1]
-							: fontFileName;
-						if (fontWeight.toLowerCase() === 'thin') {
-							fontWeight = 100;
-						} else if (fontWeight.toLowerCase() === 'extralight') {
-							fontWeight = 200;
-						} else if (fontWeight.toLowerCase() === 'light') {
-							fontWeight = 300;
-						} else if (fontWeight.toLowerCase() === 'medium') {
-							fontWeight = 500;
-						} else if (fontWeight.toLowerCase() === 'semibold') {
-							fontWeight = 600;
-						} else if (fontWeight.toLowerCase() === 'bold') {
-							fontWeight = 700;
-						} else if (
-							fontWeight.toLowerCase() === 'extrabold' ||
-							fontWeight.toLowerCase() === 'heavy'
-						) {
-							fontWeight = 800;
-						} else if (fontWeight.toLowerCase() === 'black') {
-							fontWeight = 900;
-						} else {
-							fontWeight = 400;
-						}
-						fs.appendFile(
-							fontsFile,
-							`@font-face {\n\tfont-family: ${fontName};\n\tfont-display: swap;\n\tsrc: url("../fonts/${fontFileName}.woff2") format("woff2"), url("../fonts/${fontFileName}.woff") format("woff");\n\tfont-weight: ${fontWeight};\n\tfont-style: normal;\n}\r\n`,
-							cb
-						);
-						newFileOnly = fontFileName;
-					}
-				}
+  fs.readdir(fontsDir, (err, fontFiles) => {
+    if (err || !fontFiles) return cb();
 
-		}
-	});
+    const uniqueFonts = new Set();
+    let content = "";
 
-	return gulp.src(`${srcFolder}`);
-	function cb() {}
-});
+    fontFiles.forEach((file) => {
+      const ext = path.extname(file);
+      if (![".woff", ".woff2"].includes(ext)) return;
 
-gulp.task('fontsDocs', gulp.series('otfToTtf', 'ttfToWoff', 'fontsStyle'));
+      const base = path.basename(file, ext);
+      if (uniqueFonts.has(base)) return;
+      uniqueFonts.add(base);
+
+      const [fontName, weightName = "regular"] = base.split("-");
+      const weightMap = {
+        thin: 100,
+        extralight: 200,
+        light: 300,
+        regular: 400,
+        medium: 500,
+        semibold: 600,
+        bold: 700,
+        extrabold: 800,
+        black: 900,
+      };
+      const weight = weightMap[weightName.toLowerCase()] || 400;
+
+      content += `@font-face {
+  font-family: '${fontName}';
+  font-display: swap;
+  src: url("../fonts/${base}.woff2") format("woff2"),
+       url("../fonts/${base}.woff") format("woff");
+  font-weight: ${weight};
+  font-style: normal;
+}\n`;
+    });
+
+    fs.writeFile(styleFile, content, cb);
+  });
+}
+
+gulp.task("fontsDocs", gulp.series(otfToTtf, ttfToWoff, copyWoff, fontsStyle));
