@@ -1,0 +1,182 @@
+@use "./base/index" as *;
+
+.buildings {
+  min-height: rem(488);
+  margin-bottom: rem(100);
+
+  background-image: url(../../img/buildings/buildings.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center top;
+
+  @include mediaBg() {
+    background-image: url("../../img/buildings/buildings@2x.png");
+  }
+
+  @include laptop {
+    background-position: rem(-212) 108%;
+    background-size: auto rem(488);
+  }
+
+  @include mobile {
+    background-image: url(../../img/buildings/buildings-mobile.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center -257%;
+  }
+}
+
+.buildings__wrapper {
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.buildings__title {
+  margin-bottom: rem(85);
+  max-width: rem(867);
+  font-family: var(--font-accent);
+  font-weight: 500;
+  font-size: rem(45);
+  line-height: 1.33;
+  text-transform: capitalize;
+  color: #495e4c;
+
+  @include tablet {
+    font-size: rem(44);
+    max-width: rem(545);
+  }
+
+  @include mobile {
+    font-size: rem(28);
+    line-height: 1.36;
+    max-width: rem(344);
+    margin-bottom: rem(55);
+  }
+}
+
+.buildings__title-separator {
+  display: inline-flex;
+  gap: rem(30);
+  align-items: center;
+  &::after {
+    content: "";
+    border-radius: 1px;
+    width: 236px;
+    height: 3px;
+    background: #78c081;
+
+    @include mobile {
+      width: 106px;
+      height: 2px;
+      display: none;
+    }
+  }
+}
+
+.buildings__title-separator-mobile {
+  display: none;
+
+  &::after {
+    content: "";
+    border-radius: 1px;
+    width: 236px;
+    height: 3px;
+    background: #78c081;
+
+    @include mobile {
+      width: 106px;
+      height: 2px;
+    }
+  }
+
+  @include mobile {
+    display: inline-flex;
+    gap: rem(17);
+    align-items: center;
+  }
+}
+
+.bulidings__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: rem(47);
+
+  @include laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(20);
+  }
+}
+.buildings__card {
+  position: relative;
+
+  @include mobile {
+    max-width: rem(152);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    height: 100%;
+    border-radius: rem(24);
+    overflow: hidden;
+    background: #fff; // чтобы всё выглядело цельно
+  }
+}
+.buildings__card-price {
+  position: absolute;
+  top: rem(20);
+
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: rem(15);
+  color: #495d4c;
+  text-align: center;
+  padding: rem(5) 0;
+
+  border-radius: 0 10px 10px 0;
+  width: rem(119);
+  height: rem(28);
+  background: #d9fadd;
+}
+.buildings__card-img {
+  overflow: hidden;
+  object-fit: cover; // чтобы изображение сохраняло пропорции и заполняло всю высоту
+  border-radius: rem(24) rem(24) 0 0;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.buildings__card-img img {
+  max-width: none;
+}
+
+.buildings__card-body {
+  display: flex;
+
+  justify-content: baseline;
+  font-family: var(--font-accent);
+  font-weight: 500;
+  font-size: rem(16);
+  color: #78c081;
+  padding-left: rem(15);
+  padding-bottom: rem(10);
+
+  width: rem(257);
+  min-height: 0;
+  backdrop-filter: blur(2px);
+  background: #fff;
+  border-radius: 0 0 rem(20) rem(20);
+
+  @include mobile {
+    width: 100%;
+  }
+}

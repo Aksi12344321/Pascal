@@ -1,12 +1,13 @@
 @use "sass:math";
 @use "functions" as *;
 
-$laptop: 1439.98;
+$laptop: 1440.98;
 $s-laptop: 1280.98;
 $tablet: 1023.98;
 $mobile: 768.98;
 $s-mobile: 592.98;
 $mobile-s: 539.98;
+$s-mini: 431.98;
 $mini: 371.98;
 $mini-s: 363.98;
 
@@ -71,6 +72,12 @@ $mini-s: 363.98;
 }
 
 @mixin mobile-s {
+  @media (width <= rem($s-mobile)) {
+    @content;
+  }
+}
+
+@mixin s-mini {
   @media (width <= rem($mobile-s)) {
     @content;
   }

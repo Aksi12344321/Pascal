@@ -20,7 +20,6 @@
   padding-left: calc((100% - var(--container-width)) / 2 + var(--container-padding));
 
   @include tablet {
-    //(max-width: --container-width)
     padding-left: var(--container-padding);
   }
 }

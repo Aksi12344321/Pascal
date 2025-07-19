@@ -1,0 +1,21 @@
+@use "./base/index" as *;
+
+.form-input {
+  border-radius: rem(15);
+  box-shadow: 0 0 8px 0 rgba(66, 83, 69, 0.14);
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+
+  &::placeholder {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 14px;
+    color: #7ca381;
+  }
+
+  &:focus {
+    border-color: #78c081;
+    box-shadow: 0 0 0 2px rgba(76, 217, 100, 0.1);
+  }
+}

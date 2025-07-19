@@ -2,7 +2,6 @@
 
 .header {
   min-height: rem(820); ////задаем размер, так как фоновая картинка сожмется до размера контента без этого
-  margin-bottom: rem(100);
 
   background-image: url(./../../img/header/header.jpeg);
   background-position: left center;
@@ -102,6 +101,8 @@
   }
 }
 
+/* =======================Кнопка верхнего меню==================== */
+
 .nav__btns {
   display: flex;
   gap: 30px;
@@ -113,6 +114,47 @@
     display: none;
   }
 }
+
+.btn-nav {
+  display: inline-block;
+  padding: rem(15) rem(50);
+  border-radius: rem(25);
+  background: #9cd3a3;
+  box-shadow: inset 2px -2px 12px rgba(34, 111, 33, 0.36); //inner shadow
+  color: white;
+  font-family: var(--font-accent);
+  font-size: rem(15);
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.04rem;
+  transition: all 0.2s ease-in;
+
+  border: 10px solid rgba(255, 255, 255, 0.45);
+  background-clip: padding-box; //Чтобы фон не попадал на рамку
+
+  &--active {
+    background-color: rgb(92, 205, 106);
+  }
+
+  &:hover {
+    background: #54e165;
+    background-clip: padding-box;
+  }
+
+  &--fixed {
+    border: 10px solid rgba(120, 192, 129, 0.25);
+    background-clip: padding-box; //Чтобы фон не попадал на рамку
+  }
+
+  @include laptop {
+    padding: rem(10) rem(30);
+    font-size: rem(14);
+    border-radius: rem(20);
+  }
+}
+
+/* ==========Header Content============== */
 
 .header__content {
   display: flex;
@@ -150,14 +192,17 @@
   }
 
   @include mobile {
-    font-size: rem(36);
+    font-size: rem(44);
     line-height: 128%;
     text-align: center;
   }
 
+  @include s-mini {
+    font-size: rem(35);
+  }
+
   @include mini-s {
-    font-size: rem(30);
-    line-height: 128%;
+    font-size: rem(28);
   }
 }
 
@@ -217,15 +262,17 @@
   }
 
   @include mobile {
-    font-size: rem(36);
+    font-size: rem(44);
     line-height: 128%;
     letter-spacing: 0.03em;
     color: #78c081;
   }
 
+  @include s-mini {
+    font-size: rem(35);
+  }
   @include mini-s {
-    font-size: rem(30);
-    line-height: 128%;
+    font-size: rem(28);
   }
 }
 

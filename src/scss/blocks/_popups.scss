@@ -16,6 +16,7 @@
 
   overflow: hidden; //Блокируем внешний скролл
   max-height: 90vh;
+  transition: all 0.5s ease-in;
 }
 
 .dialog__inner {
@@ -201,29 +202,22 @@
   display: flex;
   flex-direction: column;
   gap: rem(16);
+}
 
-  input {
-    padding: rem(16) rem(20);
-    border-radius: rem(15);
-    box-shadow: 0 0 8px 0 rgba(66, 83, 69, 0.14);
-    background: #fff;
-    font-size: 16px;
-    outline: none;
+.contacts__form-input {
+  padding: rem(16) rem(20);
+}
 
-    &::placeholder {
-      font-family: var(--font-main);
-      font-weight: 400;
-      font-size: 14px;
-      color: #7ca381;
-    }
+.contacts__btn {
+  margin-top: rem(25);
+}
 
-    &:focus {
-      border-color: #78c081;
-      box-shadow: 0 0 0 2px rgba(76, 217, 100, 0.1);
-    }
-  }
-
-  button {
-    margin-top: rem(25);
-  }
+.btn-popup {
+  padding-top: rem(19);
+  padding-bottom: rem(19);
+  border-radius: rem(25);
+  font-size: rem(15);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 12px solid rgba(120, 192, 129, 0.25);
 }

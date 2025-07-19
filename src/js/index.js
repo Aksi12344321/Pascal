@@ -10,3 +10,6 @@ mobileNav();
 import popup from "./modules/popup.js";
 popup(".dialog-1", "header-btn-1");
 popup(".dialog-2", "header-btn-2", true);
+
+import toggleServicesTabs from "./modules/services-tabs.js";
+toggleServicesTabs();
