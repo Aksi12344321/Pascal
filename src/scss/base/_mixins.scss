@@ -1,4 +1,4 @@
-@use "sass:math";
+/* @use "sass:math";
 @use "functions" as *;
 
 $laptop: 1440.98;
@@ -141,4 +141,152 @@ $mini-s: 363.98;
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     @content;
   }
+}
+ */
+
+@use "sass:math";
+@use "functions" as *;
+
+$laptop: 1440.98;
+$ss-laptop: 1400.98;
+$s-laptop: 1280.98;
+$tablet: 1023.98;
+$mobile: 768.98;
+$s-mobile: 592.98;
+$mobile-s: 539.98;
+$s-mini: 431.98;
+$mini: 371.98;
+$mini-s: 363.98;
+
+// 🌟 High DPI
+@mixin mediaBg() {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    @content;
+  }
+}
+
+// 📱 Mobile First — корректные медиа-запросы:
+@mixin laptop {
+  @media (max-width: rem($laptop)) {
+    @content;
+  }
+}
+
+@mixin ss-laptop {
+  @media (max-width: rem($ss-laptop)) {
+    @content;
+  }
+}
+
+@mixin s-laptop {
+  @media (max-width: rem($s-laptop)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: rem($tablet)) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: rem($mobile)) {
+    @content;
+  }
+}
+
+@mixin s-mobile {
+  @media (max-width: rem($s-mobile)) {
+    @content;
+  }
+}
+
+@mixin mobile-s {
+  @media (max-width: rem($mobile-s)) {
+    @content;
+  }
+}
+
+@mixin s-mini {
+  @media (max-width: rem($s-mini)) {
+    @content;
+  }
+}
+
+@mixin mini {
+  @media (max-width: rem($mini)) {
+    @content;
+  }
+}
+
+@mixin mini-s {
+  @media (max-width: rem($mini-s)) {
+    @content;
+  }
+}
+
+// 📏 "Above" медиазапросы (используем min-width)
+@mixin laptop-above {
+  @media (min-width: rem($laptop + 0.02)) {
+    @content;
+  }
+}
+
+@mixin tablet-above {
+  @media (min-width: rem($tablet + 0.02)) {
+    @content;
+  }
+}
+
+@mixin mobile-above {
+  @media (min-width: rem($mobile + 0.02)) {
+    @content;
+  }
+}
+
+// 💻 Hover
+@mixin hover($hasActiveEffectOnMobile: true) {
+  @media (any-hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @if ($hasActiveEffectOnMobile) {
+    @media (any-hover: none) {
+      &:active {
+        @content;
+      }
+    }
+  }
+}
+
+// 🧠 Fluid text
+@mixin fluid-text($max: 48, $min: 16) {
+  font-size: fluid($max, $min);
+}
+
+// 🙈 Служебные
+@mixin hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin show {
+  opacity: 1;
+  visibility: visible;
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
 }
