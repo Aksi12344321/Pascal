@@ -3,12 +3,12 @@
 .cta {
   padding-block: rem(55);
   margin-bottom: rem(100);
-  background-image: url(./../../img/cta/cta.jpg);
+  background-image: url(../../img/cta/cta.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 100% 30%;
   @include mediaBg() {
-    background-image: url("./../img/cta/cta@2x.jpg");
+    background-image: url(../../img/cta/cta@2x.jpg);
   }
 }
 

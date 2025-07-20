@@ -14,6 +14,7 @@
 
   @include mobile {
     background-position: center center;
+    min-height: auto;
     height: auto;
     padding-bottom: rem(290);
     background-image: url(./../../img/header/header-mobile.jpg);

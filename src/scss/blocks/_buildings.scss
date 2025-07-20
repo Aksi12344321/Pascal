@@ -10,7 +10,7 @@
   background-position: center top;
 
   @include mediaBg() {
-    background-image: url("../../img/buildings/buildings@2x.png");
+    background-image: url(../../img/buildings/buildings@2x.png);
   }
 
   @include laptop {
