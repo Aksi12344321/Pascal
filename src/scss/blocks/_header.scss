@@ -3,13 +3,13 @@
 .header {
   min-height: rem(820); ////задаем размер, так как фоновая картинка сожмется до размера контента без этого
 
-  background-image: url(./../../img/header/header.jpeg);
+  background-image: url("../img/header/header.jpeg");
   background-position: left center;
   background-repeat: no-repeat;
   background-size: cover;
 
   @include mediaBg() {
-    background-image: url(./../../img/header/header@2x.jpeg);
+    background-image: url("../img/header/header@2x.jpeg");
   }
 
   @include mobile {
@@ -17,7 +17,11 @@
     min-height: auto;
     height: auto;
     padding-bottom: rem(290);
-    background-image: url(./../../img/header/header-mobile.jpg);
+    background-image: url("../img/header/header-mobile.jpg");
+
+    @include mediaBg() {
+      background-image: url("../img/header/header-mobile@2x.jpg");
+    }
   }
 }
 
