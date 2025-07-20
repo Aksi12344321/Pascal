@@ -4,14 +4,10 @@
   min-height: rem(488);
   margin-bottom: rem(100);
 
-  background-image: url(../../img/buildings/buildings.png);
+  background-image: url("../img/buildings/buildings.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center top;
-
-  @include mediaBg() {
-    background-image: url(../../img/buildings/buildings@2x.png);
-  }
 
   @include laptop {
     background-position: rem(-212) 108%;
@@ -19,7 +15,7 @@
   }
 
   @include mobile {
-    background-image: url(../../img/buildings/buildings-mobile.png);
+    background-image: url("../img/buildings/buildings-mobile.png");
     background-repeat: no-repeat;
     background-size: auto;
     background-position: center -257%;
