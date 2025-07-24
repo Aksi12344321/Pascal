@@ -205,7 +205,7 @@ function popup(dialogSelector, openBtnId, withForm = false) {
 
 // Инициализация формы в секции feedback
 document.addEventListener("DOMContentLoaded", () => {
-  const feedbackFormContainer = document.querySelector(".feedback__form.form");
+  const feedbackFormContainer = document.querySelector(".cta__form.form");
   if (feedbackFormContainer) {
     const originalFormHTML = feedbackFormContainer.innerHTML;
     handleFormSubmission(feedbackFormContainer, feedbackFormContainer, originalFormHTML);

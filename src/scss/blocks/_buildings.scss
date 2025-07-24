@@ -109,22 +109,31 @@
     gap: rem(20);
   }
 }
+
 .buildings__card {
   position: relative;
+  max-width: rem(257);
+
+  background: #fff;
+  box-shadow: 0 0 10px 0 rgba(73, 93, 76, 0.1);
+  overflow: hidden;
+  border-radius: rem(24);
 
   @include mobile {
-    max-width: rem(152);
+    width: rem(152);
+    height: rem(192);
 
     display: flex;
     flex-direction: column;
 
     justify-content: space-between;
-    height: 100%;
+
     border-radius: rem(24);
     overflow: hidden;
     background: #fff; // чтобы всё выглядело цельно
   }
 }
+
 .buildings__card-price {
   position: absolute;
   top: rem(20);
@@ -141,38 +150,29 @@
   height: rem(28);
   background: #d9fadd;
 }
-.buildings__card-img {
-  overflow: hidden;
-  object-fit: cover; // чтобы изображение сохраняло пропорции и заполняло всю высоту
-  border-radius: rem(24) rem(24) 0 0;
 
-  @include mobile {
-    width: 100%;
+.buildings__card-img {
+  border-radius: rem(24) rem(24) 0 0;
+  overflow: hidden; /* чтобы обрезать изображение по скруглению контейнера */
+
+  img {
+    @include mobile {
+      max-height: 131px; /* максимальная высота — базовая */
+      max-width: none;
+      width: auto; /* сохраним пропорции */
+      object-fit: cover; // чтобы изображение сохраняло пропорции и заполняло всю высоту
+    }
   }
 }
 
-.buildings__card-img img {
-  max-width: none;
-}
-
 .buildings__card-body {
-  display: flex;
-
   justify-content: baseline;
   font-family: var(--font-accent);
   font-weight: 500;
   font-size: rem(16);
   color: #78c081;
   padding-left: rem(15);
+  padding-right: rem(15);
   padding-bottom: rem(10);
-
-  width: rem(257);
-  min-height: 0;
-  backdrop-filter: blur(2px);
-  background: #fff;
-  border-radius: 0 0 rem(20) rem(20);
-
-  @include mobile {
-    width: 100%;
-  }
+  flex: auto 1 1;
 }
