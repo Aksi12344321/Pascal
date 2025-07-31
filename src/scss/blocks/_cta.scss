@@ -29,6 +29,10 @@
 
   margin-bottom: rem(33);
 
+  @include tablet {
+    text-align: center;
+  }
+
   @include mobile {
     font-size: rem(28);
     max-width: rem(340);
@@ -64,7 +68,11 @@
   padding: rem(20);
 
   @include tablet {
-    width: rem(319);
+    max-width: rem(319);
+  }
+
+  @include mini {
+    max-width: rem(270);
   }
 }
 
@@ -76,6 +84,10 @@
   border-radius: rem(25);
 
   @include tablet {
-    width: rem(319);
+    max-width: rem(319);
+  }
+
+  @include mini {
+    max-width: rem(270);
   }
 }

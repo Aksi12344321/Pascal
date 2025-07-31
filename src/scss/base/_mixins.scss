@@ -151,6 +151,7 @@ $laptop: 1440.98;
 $ss-laptop: 1400.98;
 $s-laptop: 1280.98;
 $tablet: 1023.98;
+$s-tablet: 879.98;
 $mobile: 768.98;
 $s-mobile: 592.98;
 $mobile-s: 539.98;
@@ -186,6 +187,12 @@ $mini-s: 363.98;
 
 @mixin tablet {
   @media (max-width: rem($tablet)) {
+    @content;
+  }
+}
+
+@mixin s-tablet {
+  @media (max-width: rem($s-tablet)) {
     @content;
   }
 }

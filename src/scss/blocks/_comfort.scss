@@ -1,0 +1,192 @@
+@use "./base/index" as *;
+
+.comfort {
+  margin-bottom: rem(100);
+
+  @include s-laptop {
+    margin-right: rem(30);
+    margin-left: rem(30);
+  }
+}
+
+.comfort__row {
+  display: flex;
+  align-items: center;
+  gap: rem(100);
+
+  position: relative;
+  z-index: 1; // выше псевдоэлемента
+
+  @include s-tablet {
+    justify-content: center;
+  }
+
+  &::after {
+    max-width: 100%; // Ограничивает общую ширину
+    overflow: hidden; //* Скрывает выходящие элементы
+    position: absolute;
+    content: "";
+    z-index: -1; // <- ключевой момент: псевдоэлемент ниже. Сложности контекста наложения. Такая фишка не сработала ,когда мы всё пвтались сделать внутри about__descr.
+    top: 50%; //left: 50%; top: 50% (в центре родителя)
+    left: 75%;
+    transform: translate(-50%, -50%); //сдвигается так, чтобы его центр совпал с этой точкой (а не левый верхний угол)
+
+    background-image: url(../../img/comfort/ellipse.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: rem(700);
+    height: rem(1418);
+    border-radius: 100%;
+    fill: rgba(186, 255, 195, 0.5);
+    filter: blur(100px);
+
+    @include s-laptop {
+      width: rem(500);
+      height: rem(1000);
+    }
+
+    @include tablet {
+      width: rem(400);
+      height: rem(800);
+    }
+
+    @include s-tablet {
+      display: none;
+    }
+  }
+}
+.comfort__descr {
+  display: flex;
+  flex-direction: column;
+  gap: rem(30);
+
+  @include s-tablet {
+    align-items: center;
+  }
+
+  @include mini {
+    padding-left: rem(15);
+    padding-right: rem(15);
+  }
+}
+.comfort__title {
+  font-family: var(--font-accent);
+  font-weight: 500;
+  font-size: rem(45);
+  line-height: 133%;
+  text-transform: capitalize;
+  color: #495e4c;
+
+  @include tablet {
+    font-size: rem(30);
+  }
+
+  @include mobile {
+    font-size: rem(28);
+    line-height: 1.36;
+  }
+
+  @include mini {
+    font-size: rem(28);
+    line-height: 1.36;
+  }
+}
+.comfort__icons {
+  display: flex;
+  gap: rem(15);
+
+  @include tablet {
+    flex-wrap: wrap;
+  }
+}
+.comfort__list {
+  display: flex;
+  flex-direction: column;
+  gap: rem(12);
+
+  @include s-tablet {
+    margin-bottom: rem(30);
+  }
+}
+
+.comfort__list-item {
+  max-width: rem(470);
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: rem(16);
+  line-height: 150%;
+  color: #7ca381;
+  position: relative;
+  padding-left: rem(25);
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: rem(15);
+    height: rem(15);
+    top: rem(3);
+    left: 0;
+    background-image: url(../../img/comfort/list-icon.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+.comfort__text {
+  max-width: rem(540);
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: rem(16);
+  line-height: 162%;
+  color: #848484;
+  text-wrap: balance;
+
+  @include s-tablet {
+    text-align: justify;
+    margin-bottom: rem(45);
+  }
+
+  @include mini {
+    max-width: rem(300);
+  }
+}
+
+.comfort__btn-link {
+  font-size: rem(17);
+
+  @include mini {
+    font-size: rem(14);
+    padding: rem(20);
+  }
+}
+
+.comfort__grid {
+  display: flex;
+  gap: rem(20);
+
+  @include s-tablet {
+    display: none;
+  }
+}
+
+.comfort__grid-item {
+  border-radius: rem(30);
+  overflow: hidden; /* чтобы обрезать изображение по скруглению контейнера */
+  box-shadow: 0 0 10px 0 rgba(26, 26, 26, 0.3);
+}
+
+.comfort__grid-left,
+.comfort__grid-right {
+  display: flex;
+  flex-direction: column;
+  gap: rem(20);
+}
+
+.comfort__grid-left {
+  justify-content: flex-start;
+}
+
+.comfort__grid-right {
+  justify-content: center; /* ВАЖНО: вертикально центрирует второй столбец */
+}

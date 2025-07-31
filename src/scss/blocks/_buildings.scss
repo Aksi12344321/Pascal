@@ -51,6 +51,10 @@
     max-width: rem(344);
     margin-bottom: rem(55);
   }
+
+  @include s-mini {
+    margin-left: rem(20);
+  }
 }
 
 .buildings__title-separator {
@@ -131,6 +135,11 @@
     border-radius: rem(24);
     overflow: hidden;
     background: #fff; // чтобы всё выглядело цельно
+  }
+
+  @include s-mini {
+    width: rem(132);
+    height: rem(172);
   }
 }
 
