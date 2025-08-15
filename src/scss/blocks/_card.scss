@@ -1,0 +1,46 @@
+@use "./base/index" as *;
+
+.card {
+  position: relative;
+}
+.card__img {
+}
+.card__logo {
+  position: absolute;
+  left: 0;
+  top: rem(35);
+  z-index: 10;
+  background: #d9fadd;
+  border-radius: 0 rem(15) rem(15) 0;
+  width: rem(164);
+  height: rem(49);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__description {
+  position: absolute;
+  bottom: rem(45);
+  left: rem(41);
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+}
+
+.card__title {
+  font-family: var(--font-accent);
+  font-weight: 500;
+  font-size: rem(24);
+  line-height: 142%;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.card__text {
+  max-width: rem(400);
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: rem(16);
+  color: #fff;
+}

@@ -19,15 +19,19 @@
 .container-right {
   padding-left: calc((100% - var(--container-width)) / 2 + var(--container-padding));
 
-  @include tablet {
+  @include s-laptop {
     padding-left: var(--container-padding);
+  }
+
+  @include mobile {
+    padding-left: rem(20);
   }
 }
 
 .container-left {
   padding-right: calc((100% - var(--container-width)) / 2 + var(--container-padding));
 
-  @include tablet {
+  @include s-laptop {
     padding-right: var(--container-padding);
   }
 }

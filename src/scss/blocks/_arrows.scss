@@ -1,0 +1,16 @@
+@use "./base/index" as *;
+
+.slider-arrow {
+  width: rem(34);
+  height: rem(34);
+}
+
+.slider-arrow--left {
+  border-radius: rem(23);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); // мягкое белое свечение
+}
+
+.slider-arrow--right {
+  border-radius: rem(23);
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.6); // мягкое зелёное свечение
+}

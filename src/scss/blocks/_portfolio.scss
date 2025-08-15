@@ -1,0 +1,126 @@
+@use "./base/index" as *;
+
+.portfolio {
+  margin-bottom: rem(100);
+}
+
+.wrapper {
+  background-image: url(../../img/portfolio/background.svg);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: contain;
+
+  @include mobile {
+    background-position: center rem(125);
+    background-size: cover;
+  }
+
+  /*  &::after {
+    max-width: 100%; // Ограничивает общую ширину
+    overflow: hidden; //* Скрывает выходящие элементы
+    position: absolute;
+    content: "";
+    z-index: -1; // <- ключевой момент: псевдоэлемент ниже. Сложности контекста наложения. Такая фишка не сработала ,когда мы всё пвтались сделать внутри about__descr.
+    top: 50%; //left: 50%; top: 50% (в центре родителя)
+    left: 75%;
+    transform: translate(-50%, -50%); //сдвигается так, чтобы его центр совпал с этой точкой (а не левый верхний угол)
+
+    background-image: url(../../img/comfort/ellipse.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: rem(700);
+    height: rem(1418);
+    border-radius: 100%;
+    fill: rgba(186, 255, 195, 0.5);
+    filter: blur(100px); */
+}
+.portfolio__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(50);
+  margin-bottom: rem(46);
+
+  @include mobile {
+    flex-direction: column;
+    gap: rem(25);
+  }
+}
+.portfolio__title {
+  width: rem(500);
+  font-family: var(--font-accent);
+  font-weight: 500;
+  font-size: rem(45);
+  line-height: 1.33;
+  text-transform: capitalize;
+  color: #495e4c;
+
+  @include mobile {
+    font-size: rem(28);
+    line-height: 1.36;
+  }
+
+  @include s-mobile {
+    width: rem(400);
+  }
+
+  @include mobile-s {
+    width: rem(370);
+  }
+
+  @include s-mini {
+    width: rem(280);
+  }
+}
+.portfolio__text {
+  max-width: rem(600);
+  font-family: var(--font-main);
+  font-weight: 400;
+  font-size: rem(16);
+  line-height: 1.62;
+  color: #848484;
+
+  @include mobile {
+    font-size: rem(14);
+    line-height: 1.71;
+    max-width: rem(520);
+  }
+
+  @include s-mobile {
+    width: rem(400);
+  }
+
+  @include mobile-s {
+    width: rem(370);
+  }
+
+  @include s-mini {
+    width: rem(280);
+  }
+}
+
+/*Слайдер со стрелками-----------------------------------*/
+
+.portfolio__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: rem(30);
+
+  @include mobile {
+    flex-direction: column-reverse;
+  }
+}
+.portfolio__buttons {
+  display: flex;
+  gap: rem(25);
+
+  @include mobile {
+    margin: 0 auto;
+  }
+}
+
+.portfolio__slider {
+  display: flex;
+  gap: rem(30);
+}
