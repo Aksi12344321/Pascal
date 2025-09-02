@@ -12,19 +12,5 @@ popup(".dialog-2", "comfort-btn", true);
 import toggleServicesTabs from "./modules/services-tabs.js";
 toggleServicesTabs();
 
-//Слайдер-----------------
-import Swiper from "swiper/bundle";
-import "swiper/css/bundle";
-
-const swiper = new Swiper("#swiper-1", {
-  loop: true,
-  speed: 600,
-  spaceBetween: 24,
-  slidesPerView: "auto",
-  centeredSlides: false,
-
-  navigation: {
-    nextEl: "#slideNext1",
-    prevEl: "#sliderPrev1",
-  },
-});
+import swipe1 from "./modules/swiper-1.js";
+swipe1();
