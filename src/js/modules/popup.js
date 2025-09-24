@@ -3,7 +3,7 @@ function checkFormValidity(form, submitButton, phoneError) {
   const nameInput = form.querySelector('input[placeholder="Ваше Имя"]');
   const phoneInput = form.querySelector('input[placeholder="Номер телефона"]');
   const phoneRegex = /^\+?\d{7,15}$/; //Определяется регулярное выражение phoneRegex, которое проверяет формат номера телефона:
-  // ^ — начало строки.
+  // ^ — начало строки.klkl
   // \+? — необязательный знак "+" в начале (например, +7 или 8).
   //\d{7,15} — от 7 до 15 цифр.
   //$ — конец строки.
@@ -206,6 +206,15 @@ function popup(dialogSelector, openBtnId, withForm = false) {
 // Инициализация формы в секции feedback
 document.addEventListener("DOMContentLoaded", () => {
   const feedbackFormContainer = document.querySelector(".cta__form.form");
+  if (feedbackFormContainer) {
+    const originalFormHTML = feedbackFormContainer.innerHTML;
+    handleFormSubmission(feedbackFormContainer, feedbackFormContainer, originalFormHTML);
+  }
+});
+
+// Инициализация формы в footer
+document.addEventListener("DOMContentLoaded", () => {
+  const feedbackFormContainer = document.querySelector(".footer__form.form");
   if (feedbackFormContainer) {
     const originalFormHTML = feedbackFormContainer.innerHTML;
     handleFormSubmission(feedbackFormContainer, feedbackFormContainer, originalFormHTML);

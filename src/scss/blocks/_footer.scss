@@ -206,6 +206,16 @@
   gap: rem(20);
   margin-bottom: rem(35);
 }
+
+.inputs {
+  display: flex;
+  gap: rem(30);
+
+  @include tablet {
+    flex-direction: column;
+  }
+}
+
 .footer__form-input {
   border-radius: rem(15);
   width: rem(290);
